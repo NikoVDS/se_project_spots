@@ -1,0 +1,27 @@
+.header {
+  margin: 0 auto;
+  background-color: #ffffffcc;
+  max-width: 100%;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.header__logo {
+  max-width: 10%;
+}
+
+.header__title {
+  font-family: "DM Mono", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  leading-trim: none;
+  line-height: 100%;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 10px;
+}
