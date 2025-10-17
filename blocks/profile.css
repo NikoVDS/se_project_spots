@@ -53,11 +53,9 @@
 .profile__description {
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: Medium;
+  font-style: normal;
   font-size: 16px;
-  leading-trim: NONE;
   line-height: 100%;
-  letter-spacing: 0%;
   color: #212121b2;
   display: -webkit-box;
   -webkit-line-clamp: 3; /* Number of lines to display before truncating */
@@ -75,11 +73,9 @@
   text-align: left;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: Medium;
+  font-style: normal;
   font-size: 16px;
-  leading-trim: NONE;
   line-height: 100%;
-  letter-spacing: 0%;
   padding: 0;
   color: rgba(33, 33, 33, 0.7);
 }
@@ -114,11 +110,9 @@
   color: #fcf5e5;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: Medium;
+  font-style: normal;
   font-size: 16px;
-  leading-trim: NONE;
   line-height: 100%;
-  letter-spacing: 0%;
 }
 
 @media screen and (max-width: 630px) {
