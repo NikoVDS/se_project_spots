@@ -23,7 +23,7 @@
 .profile__avatar-image {
   max-width: 190px;
   aspect-ratio: 1/1;
-  border-radius: 16px;
+  border-radius: 8px;
 }
 
 .profile__text {
@@ -48,6 +48,10 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 500;
+  color: #212121;
 }
 
 .profile__description {
@@ -69,7 +73,7 @@
   border: none;
   display: flex;
   gap: 8px;
-  background-color: #fcf5e5;
+  background-color: transparent;
   text-align: left;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;

@@ -6,7 +6,7 @@
   padding-bottom: 40px;
   column-gap: 20px;
   row-gap: 40px;
-  grid-template-columns: repeat(auto-fit, minmax(0, 413px));
+  grid-template-columns: repeat(auto-fit, minmax(min(413px, 100%), 1fr));
   border-bottom: 1px solid #21212166;
 }
 
@@ -23,7 +23,7 @@
 .cards__image {
   max-width: 100%;
   aspect-ratio: 1/1;
-  border-radius: 16px;
+  border-radius: 8px;
   margin-bottom: 12px;
 }
 
