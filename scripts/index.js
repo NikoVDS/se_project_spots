@@ -1,4 +1,5 @@
 //Open And Close Modal Functions
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
 }
@@ -52,14 +53,15 @@ addCardFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
   console.log(captionInput.value);
   console.log(linkInput.value);
+  closeModal(newPostModal);
 });
 
 newPostBtn.addEventListener("click", function (evt) {
   evt.preventDefault();
-  openModal(editProfileModal);
+  openModal(newPostModal);
 });
 
 newPostCloseBtn.addEventListener("click", function (evt) {
   evt.preventDefault();
-  closeModal(editProfileModal);
+  closeModal(newPostModal);
 });
