@@ -121,6 +121,7 @@
   border-radius: 8px;
   background-color: #212121;
   color: #fcf5e5;
+  border-style: none;
 }
 
 .modal__submit-button:hover {

@@ -117,6 +117,7 @@
   font-style: normal;
   font-size: 16px;
   line-height: 100%;
+  border-style: none;
 }
 
 @media screen and (max-width: 630px) {

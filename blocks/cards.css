@@ -24,7 +24,7 @@
 
 .cards__list li {
   width: 100%;
-  height: 100%; /* ensures li matches card height */
+  height: 100%;
 }
 
 .cards__card {
