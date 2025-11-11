@@ -29,6 +29,11 @@
 
 .cards__card {
   max-width: 100%;
+  position: relative;
+}
+
+.cards__card:hover {
+  cursor: pointer;
 }
 
 .cards__image {
@@ -36,6 +41,30 @@
   aspect-ratio: 1/1;
   border-radius: 8px;
   margin-bottom: 12px;
+}
+
+.cards__delete {
+  display: flex;
+  position: absolute;
+  top: 10px;
+  left: 371px;
+  border-radius: 50%;
+  border-style: none;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  background-color: #0000004d;
+}
+
+.cards__delete:hover {
+  background-color: #ff6565;
+  cursor: pointer;
+}
+
+.cards__delete-image {
+  width: 12px;
+  height: 15px;
 }
 
 .cards__division {
@@ -68,4 +97,15 @@
 .cards__like:hover {
   cursor: pointer;
   opacity: 100%;
+}
+
+.cards__like_type_liked {
+  background-image: url(../images/Union.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 1;
+}
+
+.cards__like_type_liked:hover {
+  opacity: 0.4;
 }

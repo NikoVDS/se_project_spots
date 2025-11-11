@@ -135,3 +135,33 @@
     min-width: 100%;
   }
 }
+
+.modal__image-caption-wrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.modal__image {
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 8px;
+}
+
+.modal__caption {
+  margin-top: 8px;
+  border-radius: 8px;
+  align-self: flex-start;
+  padding: 4px 8px;
+  background-color: #212121;
+  color: #ffffff;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 120%;
+}

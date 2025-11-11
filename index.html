@@ -53,110 +53,26 @@
         </section>
         <section class="cards">
           <ul class="cards__list">
-            <li>
-              <div class="cards__card">
-                <img
-                  class="cards__image"
-                  src="./images/1-photo-by-moritz-feldmann-from-pexels.jpg"
-                  alt="Chalet on a snowy mountain"
-                />
+            <template id="cards-template">
+              <li class="cards__card">
+                <img class="cards__image" src="" alt="" />
+                <button class="cards__delete">
+                  <img
+                    class="cards__delete-image"
+                    src="./images/trash-can-icon.png"
+                    alt="Trash can icon"
+                  />
+                </button>
                 <div class="cards__division">
-                  <p class="cards__caption">Val Thorens</p>
+                  <p class="cards__caption"></p>
                   <img
                     class="cards__like"
                     src="./images/like-icon.png"
                     alt="Heart icon"
                   />
                 </div>
-              </div>
-            </li>
-            <li>
-              <div class="cards__card">
-                <img
-                  class="cards__image"
-                  src="./images/2-photo-by-ceiline-from-pexels.jpg"
-                  alt="Facade of a restaurant"
-                />
-                <div class="cards__division">
-                  <p class="cards__caption">Restaurant terrace</p>
-                  <img
-                    class="cards__like"
-                    src="./images/like-icon.png"
-                    alt="Heart icon"
-                  />
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="cards__card">
-                <img
-                  class="cards__image"
-                  src="./images/3-photo-by-tubanur-dogan-from-pexels.jpg"
-                  alt="People sitting on the tables outside of a restaurant"
-                />
-                <div class="cards__division">
-                  <p class="cards__caption">An outdoor cafe</p>
-                  <img
-                    class="cards__like"
-                    src="./images/like-icon.png"
-                    alt="Heart icon"
-                  />
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="cards__card">
-                <img
-                  class="cards__image"
-                  src="./images/4-photo-by-maurice-laschet-from-pexels.jpg"
-                  alt="Wooden suspension bridge above a forest"
-                />
-                <div class="cards__division">
-                  <p class="cards__caption">
-                    A very long bridge over the forest
-                  </p>
-                  <img
-                    class="cards__like"
-                    src="./images/like-icon.png"
-                    alt="Heart icon"
-                  />
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="cards__card">
-                <img
-                  class="cards__image"
-                  src="./images/5-photo-by-van-anh-nguyen-from-pexels.jpg"
-                  alt="Tunnel with morning light"
-                />
-                <div class="cards__division">
-                  <p class="cards__caption">Tunnel with morning light</p>
-                  <img
-                    class="cards__like"
-                    src="./images/like-icon.png"
-                    alt="Heart icon"
-                  />
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="cards__card">
-                <img
-                  class="cards__image"
-                  src="./images/6-photo-by-moritz-feldmann-from-pexels.jpg"
-                  alt="Cabin in a snowy place"
-                />
-                <div class="cards__division">
-                  <p class="cards__caption">Mountain house</p>
-                  <img
-                    class="cards__like"
-                    src="./images/like-icon.png"
-                    alt="Heart icon"
-                  />
-                </div>
-              </div>
-            </li>
+              </li>
+            </template>
           </ul>
         </section>
       </main>
@@ -229,6 +145,22 @@
             <button class="modal__submit-button" type="submit">Save</button>
           </form>
         </div>
+      </div>
+      <div class="modal" id="expanded-image-modal">
+        <div class="modal__image-caption-wrapper">
+          <img class="modal__image" src="" alt="Image expanded" />
+          <p class="modal__caption"></p>
+        </div>
+        <button
+          type="button"
+          class="modal__close-button modal__close-button_image"
+        >
+          <img
+            src="./images/close-icon-white.png"
+            alt="Close icon"
+            class="modal__close-icon"
+          />
+        </button>
       </div>
     </div>
     <script src="./scripts/index.js"></script>
