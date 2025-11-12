@@ -55,7 +55,7 @@
           <ul class="cards__list">
             <template id="cards-template">
               <li class="cards__card">
-                <img class="cards__image" src="" alt="" />
+                <img class="cards__image" src="#" alt="New card image" />
                 <button class="cards__delete">
                   <img
                     class="cards__delete-image"
@@ -65,11 +65,7 @@
                 </button>
                 <div class="cards__division">
                   <p class="cards__caption"></p>
-                  <img
-                    class="cards__like"
-                    src="./images/like-icon.png"
-                    alt="Heart icon"
-                  />
+                  <div class="cards__like"></div>
                 </div>
               </li>
             </template>
@@ -97,6 +93,7 @@
                 id="profile-name"
                 class="modal__input"
                 placeholder="Type your name"
+                required
               />
             </div>
             <div class="modal__wrapper">
@@ -107,6 +104,7 @@
                 id="profile-description"
                 class="modal__input"
                 placeholder="Describe yourself"
+                required
               />
             </div>
             <button class="modal__submit-button" type="submit">Save</button>
@@ -131,6 +129,7 @@
                 id="image-link"
                 class="modal__input"
                 placeholder="Enter image link"
+                required
               />
             </div>
             <div class="modal__wrapper">
@@ -140,6 +139,7 @@
                 id="image-caption"
                 class="modal__input"
                 placeholder="Enter image caption"
+                required
               />
             </div>
             <button class="modal__submit-button" type="submit">Save</button>
@@ -148,7 +148,7 @@
       </div>
       <div class="modal" id="expanded-image-modal">
         <div class="modal__image-caption-wrapper">
-          <img class="modal__image" src="" alt="Image expanded" />
+          <img class="modal__image" src="#" alt="Image expanded" />
           <p class="modal__caption"></p>
         </div>
         <button

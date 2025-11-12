@@ -58,7 +58,6 @@ const cardsContainer = document.querySelector(".cards__list");
 // Create Cards Functions
 
 function getCardElement(data) {
-  const { name, link } = data;
   const cardElement = templateElement.content.cloneNode(true);
   const cardTitleElement = cardElement.querySelector(".cards__caption");
   const cardImageElement = cardElement.querySelector(".cards__image");
@@ -97,7 +96,7 @@ function closeModal(modal) {
 }
 
 imageCloseBtn.addEventListener("click", function () {
-  imageModal.classList.remove("modal_is-opened");
+  closeModal(imageModal);
 });
 
 //Edit Profile Code
@@ -129,6 +128,7 @@ addCardFormElement.addEventListener("submit", function (evt) {
     link: linkInput.value,
   };
   cardsContainer.prepend(getCardElement(newCardInformation));
+  evt.target.reset();
 });
 
 newPostBtn.addEventListener("click", function (evt) {

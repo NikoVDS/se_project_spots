@@ -34,7 +34,7 @@ page while also adapting to different screen sizes with media queries.
 
 **Link to Project on GitHub**
 
-[GitHub Link] (https://nikovds.github.io/se_project_spots/)
+[GitHub Link](https://nikovds.github.io/se_project_spots/)
 
 **Link to Video Describing Project**
 

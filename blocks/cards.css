@@ -22,11 +22,6 @@
   grid-template-columns: repeat(auto-fit, minmax(min(413px, 100%), 1fr));
 }
 
-.cards__list li {
-  width: 100%;
-  height: 100%;
-}
-
 .cards__card {
   max-width: 100%;
   position: relative;
@@ -47,7 +42,7 @@
   display: flex;
   position: absolute;
   top: 10px;
-  left: 371px;
+  right: 10px;
   border-radius: 50%;
   border-style: none;
   width: 32px;
@@ -89,14 +84,16 @@
 }
 
 .cards__like {
-  opacity: 40%;
   width: 23px;
   height: 20px;
+  background-image: url("../images/like-icon.png");
+  background-size: 100% 100%;
+  opacity: 0.4;
 }
 
 .cards__like:hover {
   cursor: pointer;
-  opacity: 100%;
+  opacity: 1;
 }
 
 .cards__like_type_liked {
