@@ -21,7 +21,7 @@ const profileFormElement = editProfileModal.querySelector(".modal__form");
 const imageModal = document.querySelector("#expanded-image-modal");
 const imageModalExpand = imageModal.querySelector(".modal__image");
 const imageModalCaption = imageModal.querySelector(".modal__caption");
-const imageCloseBtn = imageModal.querySelector(".modal__close-button");
+const imageCloseBtn = imageModal.querySelector(".modal__close-button_image");
 const initialCards = [
   {
     name: "Val Thorens",
