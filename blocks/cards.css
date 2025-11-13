@@ -86,7 +86,7 @@
 .cards__like {
   width: 23px;
   height: 20px;
-  background-image: url("../images/like-icon.png");
+  background-image: url("../images/like-icon.svg");
   background-size: 100% 100%;
   opacity: 0.4;
 }
@@ -97,7 +97,7 @@
 }
 
 .cards__like_type_liked {
-  background-image: url(../images/Union.png);
+  background-image: url("../images/like-icon-red.svg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   opacity: 1;
