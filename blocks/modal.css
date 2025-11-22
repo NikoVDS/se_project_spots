@@ -123,6 +123,14 @@
   cursor: pointer;
 }
 
+.modal__input_type_error {
+  border: 1px solid #ff000099;
+}
+
+.modal__error {
+  color: #ff0000b2;
+}
+
 .modal__submit-button {
   max-width: 156px;
   min-height: 52px;
@@ -135,6 +143,11 @@
 .modal__submit-button:hover {
   background-color: #212121cc;
   cursor: pointer;
+}
+
+.modal__submit-button:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 .modal__image-caption-wrapper {

@@ -1,4 +1,4 @@
-// Variables
+// New Post Elements
 
 const newPostBtn = document.querySelector(".profile__new-post-button");
 const newPostModal = document.querySelector("#new-post-modal");
@@ -6,6 +6,12 @@ const newPostCloseBtn = newPostModal.querySelector(".modal__close-button");
 const captionInput = newPostModal.querySelector("#image-caption");
 const linkInput = newPostModal.querySelector("#image-link");
 const addCardFormElement = newPostModal.querySelector(".modal__form");
+const formSubmitButtonNewPost = newPostModal.querySelector(
+  ".modal__submit-button"
+);
+
+// Edit Profile Elements
+
 const editProfileBtn = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editCloseBtn = editProfileModal.querySelector(".modal__close-button");
@@ -18,10 +24,16 @@ const profileDescriptionElement = document.querySelector(
   ".profile__description"
 );
 const profileFormElement = editProfileModal.querySelector(".modal__form");
+
+// Image Modal Elements
+
 const imageModal = document.querySelector("#expanded-image-modal");
 const imageModalExpand = imageModal.querySelector(".modal__image");
 const imageModalCaption = imageModal.querySelector(".modal__caption");
 const imageCloseBtn = imageModal.querySelector(".modal__close-button_image");
+
+// Default Page
+
 const initialCards = [
   {
     name: "Val Thorens",
@@ -54,6 +66,11 @@ const initialCards = [
 ];
 const templateElement = document.querySelector("#cards-template");
 const cardsContainer = document.querySelector(".cards__list");
+
+initialCards.forEach(function (card) {
+  const currentCardElement = getCardElement(card);
+  cardsContainer.prepend(currentCardElement);
+});
 
 // Create Cards Functions
 
@@ -89,17 +106,37 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", escapeHandler);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", escapeHandler);
 }
 
 imageCloseBtn.addEventListener("click", function () {
   closeModal(imageModal);
 });
 
-//Edit Profile Code
+const allModals = document.querySelectorAll(".modal");
+
+allModals.forEach((modal) => {
+  modal.addEventListener("click", function (evt) {
+    if (evt.target === evt.currentTarget) {
+      closeModal(modal);
+    }
+  });
+});
+
+function escapeHandler(evt) {
+  if (evt.key === "Escape" && openModal) {
+    allModals.forEach((modal) => {
+      closeModal(modal);
+    });
+  }
+}
+
+//Edit Profile Functions
 
 profileFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
@@ -112,13 +149,18 @@ editProfileBtn.addEventListener("click", function () {
   openModal(editProfileModal);
   profileNameInput.value = profileNameElement.textContent;
   profileDescriptionInput.value = profileDescriptionElement.textContent;
+  resetValidation(
+    editProfileModal,
+    [profileNameInput, profileDescriptionInput],
+    settings
+  );
 });
 
 editCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
 });
 
-//New Post Code
+//New Post Functions
 
 addCardFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
@@ -129,6 +171,7 @@ addCardFormElement.addEventListener("submit", function (evt) {
   };
   cardsContainer.prepend(getCardElement(newCardInformation));
   evt.target.reset();
+  disableButton(formSubmitButtonNewPost, settings);
 });
 
 newPostBtn.addEventListener("click", function (evt) {
@@ -137,11 +180,4 @@ newPostBtn.addEventListener("click", function (evt) {
 
 newPostCloseBtn.addEventListener("click", function (evt) {
   closeModal(newPostModal);
-});
-
-// Loops
-
-initialCards.forEach(function (card) {
-  const currentCardElement = getCardElement(card);
-  cardsContainer.prepend(currentCardElement);
 });
