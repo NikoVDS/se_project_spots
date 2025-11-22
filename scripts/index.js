@@ -106,6 +106,13 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  allModals.forEach((modal) => {
+    modal.addEventListener("click", function (evt) {
+      if (evt.target === evt.currentTarget) {
+        closeModal(modal);
+      }
+    });
+  });
   document.addEventListener("keydown", escapeHandler);
 }
 
@@ -119,14 +126,6 @@ imageCloseBtn.addEventListener("click", function () {
 });
 
 const allModals = document.querySelectorAll(".modal");
-
-allModals.forEach((modal) => {
-  modal.addEventListener("click", function (evt) {
-    if (evt.target === evt.currentTarget) {
-      closeModal(modal);
-    }
-  });
-});
 
 function escapeHandler(evt) {
   if (evt.key === "Escape" && openModal) {

@@ -64,11 +64,6 @@
 }
 
 .modal__close-button_image {
-  background: none;
-  border: 0px;
-  cursor: pointer;
-  opacity: 0.4;
-  position: absolute;
   top: 0;
   right: -40px;
   padding: 0;
