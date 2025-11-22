@@ -25,10 +25,11 @@ Good luck and have fun!
 Initially I simply added the basic structure of the HTML code and linked the index.css and font files. Then proceeded to work on the header and profile section of the page.  
 On the second day I worked on the cards section and on the footer section of the page, finished all the styles and adapted it to work with more responsive designs on different devices.
 
+The JavaScript portion of the code actually took longer, especially the part involving form validation, which was harder for me to understand and take in if compared to the basic JS structure of the page. The functions in the index.js file just seemed more straight forward for me, even though I was still able to understand the functions in the validation.js file, the fact that those functions just have more parameters in general make it harder for me to understand.
+
 ### Features
 
-So far the project is just the HTML and CSS structure. It is all the appearance of the page. Changing behavior or appearance of buttons on hover and viewing different parts of the
-page while also adapting to different screen sizes with media queries.
+Most of the front-end functionality of the page is already done. The user can interact with it, the user can upload new elements to the page with the JavaScript and DOM implementation. The HTML is handling the structure and the CSS the styling of the page.
 
 ### More Information
 
@@ -38,4 +39,5 @@ page while also adapting to different screen sizes with media queries.
 
 **Link to Video Describing Project**
 
-[Link to Video] (https://www.loom.com/share/02fc600349bc4b99b141daf90990be06?sid=76ff8722-76fc-4b73-8bec-e4898095f8cc)
+[Spots HTML and CSS](https://www.loom.com/share/02fc600349bc4b99b141daf90990be06?sid=76ff8722-76fc-4b73-8bec-e4898095f8cc)
+[Spots JavaScript](https://drive.google.com/file/d/1LwK5ilpIHt5yPhpZ6NytRfnTr0wWL_NO/view?usp=sharing)
