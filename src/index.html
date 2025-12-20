@@ -13,13 +13,16 @@
       name="keywords"
       content="Spots, Social, Media, Photos, Gallery, Share"
     />
-    <link rel="stylesheet" type="text/css" href="./pages/index.css" />
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/Logo.svg" alt="Spots Logo" />
+        <img
+          class="header__logo"
+          src="<%=require('./images/Logo.svg')%>"
+          alt="Spots Logo"
+        />
         <!-- Change logo image to svg file rather than group file from Figma -->
       </header>
       <main class="content">
@@ -27,7 +30,7 @@
           <div class="profile__info">
             <img
               class="profile__avatar-image"
-              src="./images/avatar.jpg"
+              src="<%=require('./images/avatar.jpg')%>"
               alt="Avatar image"
             />
             <div class="profile__text">
@@ -36,7 +39,7 @@
               <button type="button" class="profile__edit-button">
                 <img
                   class="profile__edit-icon"
-                  src="./images/pencil-icon.svg"
+                  src="<%=require('./images/pencil-icon.svg')%>"
                   alt="Pencil icon"
                 />Edit Profile
               </button>
@@ -44,7 +47,7 @@
             <button type="button" class="profile__new-post-button">
               <img
                 class="profile__new-post-icon"
-                src="./images/plus-icon.svg"
+                src="<%=require('./images/plus-icon.svg')%>"
                 alt="Plus icon"
               />New Post
             </button>
@@ -58,7 +61,7 @@
                 <button class="cards__delete">
                   <img
                     class="cards__delete-image"
-                    src="./images/trash-can-icon.svg"
+                    src="<%=require('./images/trash-can-icon.svg')%>"
                     alt="Trash can icon"
                   />
                 </button>
@@ -79,7 +82,7 @@
           <h2 class="modal__title">Edit Profile</h2>
           <button type="button" class="modal__close-button">
             <img
-              src="./images/group27.svg"
+              src="<%=require('./images/group27.svg')%>"
               alt="Close icon"
               class="modal__close-icon"
             />
@@ -121,7 +124,7 @@
           <h2 class="modal__title">New Post</h2>
           <button type="button" class="modal__close-button">
             <img
-              src="./images/group27.svg"
+              src="<%=require('./images/group27.svg')%>"
               alt="Close icon"
               class="modal__close-icon"
             />
@@ -161,7 +164,7 @@
           <p class="modal__caption"></p>
           <button type="button" class="modal__close-button_image">
             <img
-              src="./images/close-icon-white.svg"
+              src="<%=require('./images/close-icon-white.svg')%>"
               alt="Close icon"
               class="modal__close-icon"
             />
@@ -169,7 +172,5 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/validation.js"></script>
-    <script src="./scripts/index.js"></script>
   </body>
 </html>

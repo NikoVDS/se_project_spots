@@ -1,3 +1,12 @@
+import "./index.css";
+
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+  disableButton,
+} from "../scripts/validation.js";
+
 // New Post Elements
 
 const newPostBtn = document.querySelector(".profile__new-post-button");
@@ -180,3 +189,5 @@ newPostBtn.addEventListener("click", function (evt) {
 newPostCloseBtn.addEventListener("click", function (evt) {
   closeModal(newPostModal);
 });
+
+enableValidation(settings);
