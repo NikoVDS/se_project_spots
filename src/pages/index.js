@@ -7,6 +7,10 @@ import {
   disableButton,
 } from "../scripts/validation.js";
 
+import Api from "../utils/Api.js";
+
+import { setButtonText } from "../utils/helpers.js";
+
 // New Post Elements
 
 const newPostBtn = document.querySelector(".profile__new-post-button");
@@ -32,7 +36,15 @@ const profileNameElement = document.querySelector(".profile__name");
 const profileDescriptionElement = document.querySelector(
   ".profile__description"
 );
+
+const profileAvatarImage = document.querySelector(".profile__avatar-image");
 const profileFormElement = editProfileModal.querySelector(".modal__form");
+const avatarModalBtn = document.querySelector(".profile__avatar-button");
+const avatarModal = document.querySelector("#avatar-modal");
+const avatarForm = avatarModal.querySelector(".modal__form");
+const avatarSubmitBtn = avatarModal.querySelector("modal__submit-button");
+const avatarCloseBtn = avatarModal.querySelector(".modal__close-button");
+const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 // Image Modal Elements
 
@@ -41,45 +53,46 @@ const imageModalExpand = imageModal.querySelector(".modal__image");
 const imageModalCaption = imageModal.querySelector(".modal__caption");
 const imageCloseBtn = imageModal.querySelector(".modal__close-button_image");
 
+// Delete Elements
+
+const deleteModal = document.querySelector("#delete-modal");
+let selectedCard, selectedCardId;
+const deleteForm = deleteModal.querySelector(".modal__form");
+const deleteCloseBtn = deleteModal.querySelector(".modal__close-button");
+const deleteCancelBtn = deleteModal.querySelector(
+  ".modal__submit-button_cancel"
+);
+
 // Default Page
 
-const initialCards = [
-  {
-    name: "Val Thorens",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
+const api = new Api({
+  baseUrl:
+    "https://around-api.en.tripleten-services.com/v1" /* this  is connected to the
+  baseUrl constructor parameter, so if I wanted to use any other baseUrl I'd be able to do so, an example of loose-coupling.*/,
+  headers: {
+    authorization: "0cbb0ffd-2477-4d86-b8af-aab5102e9f17",
+    "Content-Type": "application/json",
   },
-  {
-    name: "Restaurant terrace",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
-  },
-  {
-    name: "An outdoor cafe",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
-  },
-  {
-    name: "A very long bridge, over the forest and through the trees",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
-  },
-  {
-    name: "Tunnel with morning light",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-  },
-  {
-    name: "Mountain house",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-  {
-    name: "Golden Gate Bridge",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
-  },
-];
+});
+
+api
+  .getAppInfo()
+  .then(([cards, userInfo]) => {
+    cards.forEach(function (card) {
+      const currentCardElement = getCardElement(card);
+      cardsContainer.prepend(currentCardElement);
+    });
+
+    profileNameElement.textContent = userInfo.name;
+    profileDescriptionElement.textContent = userInfo.about;
+    profileAvatarImage.src = userInfo.avatar;
+  })
+  .catch((err) => {
+    console.error(`Error: ${err}`);
+  });
+
 const templateElement = document.querySelector("#cards-template");
 const cardsContainer = document.querySelector(".cards__list");
-
-initialCards.forEach(function (card) {
-  const currentCardElement = getCardElement(card);
-  cardsContainer.prepend(currentCardElement);
-});
 
 // Create Cards Functions
 
@@ -92,13 +105,36 @@ function getCardElement(data) {
   cardTitleElement.textContent = data.name;
 
   const cardLikeButton = cardElement.querySelector(".cards__like");
-  cardLikeButton.addEventListener("click", function () {
-    cardLikeButton.classList.toggle("cards__like_type_liked");
+
+  if (data.isLiked) {
+    cardLikeButton.classList.add("cards__like_type_liked");
+  }
+
+  function handleLike(evt, id) {
+    // evt.target.classList.toggle("cards__like_type_liked");
+    const isLiked = evt.target.classList.contains("cards__like_type_liked");
+    api
+      .changeLike(id, isLiked)
+      .then(() => {
+        if (isLiked) {
+          evt.target.classList.remove("cards__like_type_liked");
+        } else {
+          evt.target.classList.add("cards__like_type_liked");
+        }
+      })
+      .catch((err) => {
+        console.error(`Error: ${err}`);
+      });
+  }
+
+  cardLikeButton.addEventListener("click", (evt) => {
+    handleLike(evt, data._id);
   });
 
   const cardDeleteButton = cardElement.querySelector(".cards__delete");
-  cardDeleteButton.addEventListener("click", function () {
-    cardDeleteButton.parentElement.remove();
+  cardDeleteButton.addEventListener("click", (evt) => {
+    const deleteButtonParentCard = evt.target.closest(".cards__card");
+    handleDeleteCard(deleteButtonParentCard, data._id);
   });
 
   cardImageElement.addEventListener("click", function () {
@@ -148,9 +184,27 @@ function escapeHandler(evt) {
 
 profileFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  profileNameElement.textContent = profileNameInput.value;
-  profileDescriptionElement.textContent = profileDescriptionInput.value;
-  closeModal(editProfileModal);
+
+  const submitBtn = evt.submitter;
+
+  setButtonText(submitBtn, true);
+
+  api
+    .editUserInfo({
+      name: profileNameInput.value,
+      about: profileDescriptionInput.value,
+    })
+    .then((data) => {
+      profileNameElement.textContent = data.name;
+      profileDescriptionElement.textContent = data.about;
+      closeModal(editProfileModal);
+    })
+    .catch((err) => {
+      console.error(`Error: ${err}`);
+    })
+    .finally(() => {
+      setButtonText(submitBtn, false);
+    }); // Resetting the default text has to be done in a .finally() statement, so that if the request is succesful or fails, text will change either way
 });
 
 editProfileBtn.addEventListener("click", function () {
@@ -172,22 +226,108 @@ editCloseBtn.addEventListener("click", function () {
 
 addCardFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
+
+  const submitBtn = evt.submitter;
+
+  setButtonText(submitBtn, true);
+
   closeModal(newPostModal);
-  const newCardInformation = {
-    name: captionInput.value,
-    link: linkInput.value,
-  };
-  cardsContainer.prepend(getCardElement(newCardInformation));
-  evt.target.reset();
-  disableButton(formSubmitButtonNewPost, settings);
+  api
+    .postNewCard({ name: captionInput.value, link: linkInput.value })
+    .then((data) => {
+      const newCardInformation = {
+        name: captionInput.value,
+        link: linkInput.value,
+      };
+      cardsContainer.prepend(getCardElement(newCardInformation));
+      evt.target.reset();
+      disableButton(formSubmitButtonNewPost, settings);
+    })
+    .catch((err) => {
+      console.error(`Error: ${err}`);
+    })
+    .finally(() => {
+      setButtonText(submitBtn, false);
+    });
 });
 
-newPostBtn.addEventListener("click", function (evt) {
+newPostBtn.addEventListener("click", function () {
   openModal(newPostModal);
 });
 
-newPostCloseBtn.addEventListener("click", function (evt) {
+newPostCloseBtn.addEventListener("click", function () {
   closeModal(newPostModal);
+});
+
+// Avatar Functions
+
+function handleAvatarSubmit(evt) {
+  evt.preventDefault();
+
+  const submitBtn = evt.submitter;
+
+  setButtonText(submitBtn, true);
+
+  api
+    .editAvatarInfo({ avatar: avatarInput.value })
+    .then((data) => {
+      profileAvatarImage.src = data.avatar;
+    })
+    .catch((err) => {
+      console.error(`Error: ${err}`);
+    })
+    .finally(() => {
+      setButtonText(submitBtn, false);
+    });
+}
+
+avatarModalBtn.addEventListener("click", function (evt) {
+  openModal(avatarModal);
+});
+
+avatarForm.addEventListener("submit", handleAvatarSubmit);
+
+avatarCloseBtn.addEventListener("click", function (evt) {
+  closeModal(avatarModal);
+});
+
+// Delete Card Functions
+
+function handleDeleteSubmit(evt) {
+  evt.preventDefault();
+
+  const submitBtn = evt.submitter;
+
+  setButtonText(submitBtn, true, "Delete", "Deleting...");
+
+  api
+    .deleteCard(selectedCardId)
+    .then(() => {
+      selectedCard.remove();
+      closeModal(deleteModal);
+    })
+    .catch((err) => {
+      console.error(`Error: ${err}`);
+    })
+    .finally(() => {
+      setButtonText(submitBtn, false, "Delete", "Deleting...");
+    });
+}
+
+function handleDeleteCard(cardElement, cardId) {
+  selectedCard = cardElement;
+  selectedCardId = cardId;
+  openModal(deleteModal);
+}
+
+deleteForm.addEventListener("submit", handleDeleteSubmit);
+
+deleteCloseBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
+
+deleteCancelBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
 });
 
 enableValidation(settings);
