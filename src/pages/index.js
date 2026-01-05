@@ -197,6 +197,8 @@ profileFormElement.addEventListener("submit", function (evt) {
     .then((data) => {
       profileNameElement.textContent = data.name;
       profileDescriptionElement.textContent = data.about;
+      evt.target.reset();
+      disableButton(formSubmitButtonNewPost, settings);
       closeModal(editProfileModal);
     })
     .catch((err) => {
@@ -231,17 +233,13 @@ addCardFormElement.addEventListener("submit", function (evt) {
 
   setButtonText(submitBtn, true);
 
-  closeModal(newPostModal);
   api
     .postNewCard({ name: captionInput.value, link: linkInput.value })
     .then((data) => {
-      const newCardInformation = {
-        name: captionInput.value,
-        link: linkInput.value,
-      };
-      cardsContainer.prepend(getCardElement(newCardInformation));
+      cardsContainer.prepend(getCardElement(data));
       evt.target.reset();
       disableButton(formSubmitButtonNewPost, settings);
+      closeModal(newPostModal);
     })
     .catch((err) => {
       console.error(`Error: ${err}`);
@@ -272,6 +270,9 @@ function handleAvatarSubmit(evt) {
     .editAvatarInfo({ avatar: avatarInput.value })
     .then((data) => {
       profileAvatarImage.src = data.avatar;
+      evt.target.reset();
+      disableButton(formSubmitButtonNewPost, settings);
+      closeModal(avatarModal);
     })
     .catch((err) => {
       console.error(`Error: ${err}`);
