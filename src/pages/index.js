@@ -42,7 +42,7 @@ const profileFormElement = editProfileModal.querySelector(".modal__form");
 const avatarModalBtn = document.querySelector(".profile__avatar-button");
 const avatarModal = document.querySelector("#avatar-modal");
 const avatarForm = avatarModal.querySelector(".modal__form");
-const avatarSubmitBtn = avatarModal.querySelector("modal__submit-button");
+const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-button");
 const avatarCloseBtn = avatarModal.querySelector(".modal__close-button");
 const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
@@ -271,7 +271,7 @@ function handleAvatarSubmit(evt) {
     .then((data) => {
       profileAvatarImage.src = data.avatar;
       evt.target.reset();
-      disableButton(formSubmitButtonNewPost, settings);
+      disableButton(avatarSubmitBtn, settings);
       closeModal(avatarModal);
     })
     .catch((err) => {
