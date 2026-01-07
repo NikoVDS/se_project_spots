@@ -145,6 +145,31 @@
   cursor: default;
 }
 
+.modal__delete-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.modal__submit-button_delete {
+  max-width: 156px;
+  max-height: 52px;
+  width: 100%;
+  height: 100%;
+  gap: 8px;
+  background-color: #ff6565;
+}
+
+.modal__submit-button_cancel {
+  max-width: 156px;
+  max-height: 52px;
+  width: 100%;
+  height: 100%;
+  gap: 8px;
+  background-color: transparent;
+  color: #212121;
+  border: 1px solid #212121;
+}
+
 .modal__image-caption-wrapper {
   box-sizing: border-box;
   display: flex;
