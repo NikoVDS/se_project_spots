@@ -27,17 +27,20 @@ On the second day I worked on the cards section and on the footer section of the
 
 The JavaScript portion of the code actually took longer, especially the part involving form validation, which was harder for me to understand and take in if compared to the basic JS structure of the page. The functions in the index.js file just seemed more straight forward for me, even though I was still able to understand the functions in the validation.js file, the fact that those functions just have more parameters in general make it harder for me to understand.
 
+At this point of the project, I've worked with multiple different JavaScript concepts, such as JavaScript modules and APIs, asynchronous and synchronous JavaScript code.
+
 ### Features
 
-Most of the front-end functionality of the page is already done. The user can interact with it, the user can upload new elements to the page with the JavaScript and DOM implementation. The HTML is handling the structure and the CSS the styling of the page.
+Most of the front-end functionality of the page is already done. The user can interact with it, the user can upload new elements to the page with the JavaScript and DOM implementation. The HTML is handling the structure and the CSS the styling of the page, as well as assuring that users get different page layouts depending on their display.
+
+JavaScript is also now being used to retrieve data from an API in a server that is storing all the changes that the user makes to the page, so on page reload, all the changes that the user made to the page still remain the same. It is also making use of webpack to bundle all the different modules being used and format some parts of the CSS and JS code, adding vendor prefixes to CSS code and maintaining cross-browser and wide JS-engine compatibility.
 
 ### More Information
 
-**Link to Project on GitHub**
+**Link to Project on GitHub Pages**
 
 [GitHub Link](https://nikovds.github.io/se_project_spots/)
 
 **Link to Video Describing Project**
 
-[Spots HTML and CSS](https://www.loom.com/share/02fc600349bc4b99b141daf90990be06?sid=76ff8722-76fc-4b73-8bec-e4898095f8cc)
-[Spots JavaScript](https://drive.google.com/file/d/1LwK5ilpIHt5yPhpZ6NytRfnTr0wWL_NO/view?usp=sharing)
+[YouTube Link](https://youtu.be/m_M7mSS6-Ws)
